@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db
+  labels:
+    name: db
+    app: votingapp
+spec:
+      containers:
+      - image: postgres:9.4
+        name: db
+        resources:
+          limits:
+            cpu: 50m
+          requests:
+            cpu: 50m
+        env:
+        - name: POSTGRES_HOST_AUTH_METHOD
+          value: trust
+        ports:
+        - name: db
+          containerPort: 4532
+          hostPort: 4532
+        volumeMounts:
+          - name: db-data
+            mountPath: /var/lib/postgresql/data
+      volumes:
+          - name: db-data
+            emptyDir: {}
+
+

@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: voting
+spec:
+  template:
+    metadata:
+      # This is the name of our new "Revision," it must follow the convention {service-name}-{revision-name}
+      name: voting-app
+    spec:
+      containers:
+        - image: borkarrohit/voting-app
+          ports:
+            - containerPort: 80

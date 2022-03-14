@@ -1,0 +1,15 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: result
+spec:
+  template:
+    metadata:
+      # This is the name of our new "Revision," it must follow the convention {service-name}-{revision-name}
+      name: result-app
+    spec:
+      containers:
+        - image: borkarrohit/result-app
+          ports:
+            - containerPort: 80
+

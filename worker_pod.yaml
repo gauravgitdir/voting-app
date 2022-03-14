@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: worker
+  labels:
+    name: worker
+    app: votingapp
+spec:
+      containers:
+      - image: borkarrohit/worker-app
+        name: worker
+        ports:
+        - name: worker
+          containerPort: 27016
+          hostPort: 27016
+
+
